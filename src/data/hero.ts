@@ -1,3 +1,15 @@
+export interface HeroSlide {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  button: string;
+  badge: string;
+}
+
+
+
 export const heroSlides = [
   {
     id: 1,

@@ -1,31 +1,16 @@
 import Container from "@/components/shared/Container";
-import HeroContent from "./HeroContent";
-import HeroImage from "./HeroImage";
-import HeroOfferCards from "./HeroOfferCards";
+import HeroSlider from "./HeroSlider";
 
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-r from-slate-950 via-slate-900 to-blue-950">
+    <section className="relative overflow-hidden bg-slate-100 py-8 lg:py-14">
+      {/* Background Blur */}
+      <div className="absolute -left-28 top-0 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
+
+      <div className="absolute -right-28 bottom-0 h-80 w-80 rounded-full bg-indigo-500/10 blur-3xl" />
+
       <Container>
-        <div className="grid min-h-[600px] gap-6 py-8 lg:grid-cols-12">
-
-          {/* Main Hero */}
-          <div className="lg:col-span-8">
-            <div className="grid h-full items-center gap-8 lg:grid-cols-2">
-
-              <HeroContent />
-
-              <HeroImage />
-
-            </div>
-          </div>
-
-          {/* Right Offers */}
-          <div className="lg:col-span-4">
-            <HeroOfferCards />
-          </div>
-
-        </div>
+        <HeroSlider />
       </Container>
     </section>
   );
