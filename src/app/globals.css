@@ -159,3 +159,47 @@
   border-radius: 999px;
   background: linear-gradient(to right, #2563eb, #06b6d4);
 }
+
+
+/* Top Selling Swiper */
+.top-selling-swiper {
+  padding-bottom: 55px;
+}
+
+.top-selling-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #cbd5e1;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.top-selling-swiper .swiper-pagination-bullet-active {
+  width: 34px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #06b6d4);
+}
+
+.top-selling-swiper .swiper-button-next,
+.top-selling-swiper .swiper-button-prev {
+  color: #2563eb;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+}
+
+.top-selling-swiper .swiper-button-next::after,
+.top-selling-swiper .swiper-button-prev::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.swiper-button-next{
+right:-5px;
+}
+
+.swiper-button-prev{
+left:-5px;
+}

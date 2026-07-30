@@ -3,6 +3,7 @@ import Hero from "@/components/home/Hero";
 import Categories from "@/components/home/Categories";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import OfferBanner from "@/components/home/OfferBanner";
+import TopSelling from "@/components/home/TopSelling/TopSelling";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,8 @@ export default function HomePage() {
         <FeaturedProducts />
 
          <OfferBanner />
+
+         <TopSelling />
       </main>
     </>
   );
