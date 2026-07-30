@@ -203,3 +203,22 @@ right:-5px;
 .swiper-button-prev{
 left:-5px;
 }
+
+/* Testimonials Swiper */
+.testimonial-swiper {
+  padding-bottom: 60px;
+}
+
+.testimonial-swiper .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #cbd5e1;
+  opacity: 1;
+  transition: all .3s ease;
+}
+
+.testimonial-swiper .swiper-pagination-bullet-active {
+  width: 34px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#2563eb,#06b6d4);
+}

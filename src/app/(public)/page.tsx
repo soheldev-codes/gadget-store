@@ -5,6 +5,9 @@ import FeaturedProducts from "@/components/home/FeaturedProducts";
 import OfferBanner from "@/components/home/OfferBanner";
 import TopSelling from "@/components/home/TopSelling/TopSelling";
 import WhyChooseUs from "@/components/home/WhyChooseUs/WhyChooseUs";
+import Testimonials from "@/components/home/Testimonials/Testimonials";
+import LatestBlogs from "@/components/home/LatestBlogs/LatestBlogs";
+import Newsletter from "@/components/home/Newsletter/Newsletter";
 
 export default function HomePage() {
   return (
@@ -23,7 +26,12 @@ export default function HomePage() {
          <TopSelling />
 
          <WhyChooseUs />
+         <Testimonials />
+
+         <LatestBlogs />
+         <Newsletter />
       </main>
+      
     </>
   );
 }
