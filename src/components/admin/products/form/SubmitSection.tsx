@@ -1,6 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useFormContext } from "react-hook-form";
 
 export default function SubmitSection() {
+  const {
+    formState: { isSubmitting },
+  } = useFormContext();
+
   return (
     <section className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:flex-row sm:justify-end">
       <Link
@@ -11,17 +18,11 @@ export default function SubmitSection() {
       </Link>
 
       <button
-        type="button"
-        className="rounded-xl border border-amber-300 bg-amber-100 px-6 py-3 font-medium text-amber-800 transition hover:bg-amber-200"
-      >
-        Save Draft
-      </button>
-
-      <button
         type="submit"
-        className="rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
+        disabled={isSubmitting}
+        className="rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
       >
-        Publish Product
+        {isSubmitting ? "Publishing..." : "Publish Product"}
       </button>
     </section>
   );

@@ -1,4 +1,4 @@
-export interface Category {
+export interface Brand {
   _id?: string;
 
   name: string;
@@ -7,7 +7,7 @@ export interface Category {
 
   description?: string;
 
-  image?: string;
+  logo?: string;
 
   featured: boolean;
 

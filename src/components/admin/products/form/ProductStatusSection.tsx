@@ -1,4 +1,10 @@
+"use client";
+
+import { useFormContext } from "react-hook-form";
+
 export default function ProductStatusSection() {
+  const { register } = useFormContext();
+
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
       <h3 className="text-xl font-semibold text-slate-900">
@@ -23,7 +29,7 @@ export default function ProductStatusSection() {
 
           <input
             type="checkbox"
-            name="featured"
+            {...register("featured")}
             className="h-5 w-5"
           />
         </label>
@@ -41,7 +47,7 @@ export default function ProductStatusSection() {
 
           <input
             type="checkbox"
-            name="trending"
+            {...register("trending")}
             className="h-5 w-5"
           />
         </label>
@@ -59,7 +65,7 @@ export default function ProductStatusSection() {
 
           <input
             type="checkbox"
-            name="active"
+            {...register("active")}
             defaultChecked
             className="h-5 w-5"
           />
@@ -78,7 +84,7 @@ export default function ProductStatusSection() {
 
           <input
             type="checkbox"
-            name="draft"
+            {...register("draft")}
             className="h-5 w-5"
           />
         </label>

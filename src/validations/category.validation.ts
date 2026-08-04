@@ -1,0 +1,19 @@
+import { z } from "zod";
+
+export const categorySchema = z.object({
+  name: z.string().min(2),
+
+  slug: z.string().min(2),
+
+  description: z.string().optional(),
+
+  image: z.string().optional(),
+
+  featured: z.boolean(),
+
+  active: z.boolean(),
+});
+
+export type CategoryInput = z.infer<
+  typeof categorySchema
+>;

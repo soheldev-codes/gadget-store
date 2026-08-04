@@ -1,42 +1,62 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import { FiImage, FiUploadCloud } from "react-icons/fi";
 
 export default function ImageSection() {
+  const { register } = useFormContext();
+
+  const [thumbnailPreview, setThumbnailPreview] =
+    useState<string | null>(null);
+
+  const [galleryPreview, setGalleryPreview] =
+    useState<string[]>([]);
+
   return (
     <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <h3 className="text-xl font-semibold text-slate-900">
+      <h3 className="text-xl font-semibold">
         Product Images
       </h3>
 
       <p className="mt-2 text-sm text-slate-500">
-        Upload a thumbnail and gallery images for your product.
+        Upload product thumbnail and gallery.
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-2">
         {/* Thumbnail */}
 
         <div>
-          <label className="mb-3 block text-sm font-medium text-slate-700">
-            Thumbnail Image
+          <label className="mb-3 block font-medium">
+            Thumbnail
           </label>
 
-          <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-10 transition hover:border-blue-600 hover:bg-blue-50">
+          <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-10 hover:border-blue-600">
             <FiUploadCloud
-              size={42}
+              size={40}
               className="text-blue-600"
             />
 
-            <p className="mt-4 font-semibold">
-              Click to upload thumbnail
+            <p className="mt-4 font-medium">
+              Upload Thumbnail
             </p>
-
-            <span className="mt-1 text-sm text-slate-500">
-              PNG, JPG or WEBP
-            </span>
 
             <input
               type="file"
               accept="image/*"
               className="hidden"
+              {...register("thumbnail")}
+              onChange={(e) => {
+                const file =
+                  e.target.files?.[0];
+
+                if (!file) return;
+
+                setThumbnailPreview(
+                  URL.createObjectURL(file)
+                );
+              }}
             />
           </label>
         </div>
@@ -44,50 +64,70 @@ export default function ImageSection() {
         {/* Gallery */}
 
         <div>
-          <label className="mb-3 block text-sm font-medium text-slate-700">
-            Gallery Images
+          <label className="mb-3 block font-medium">
+            Gallery
           </label>
 
-          <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-10 transition hover:border-blue-600 hover:bg-blue-50">
+          <label className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-10 hover:border-blue-600">
             <FiImage
-              size={42}
+              size={40}
               className="text-blue-600"
             />
 
-            <p className="mt-4 font-semibold">
-              Upload multiple images
+            <p className="mt-4 font-medium">
+              Upload Gallery
             </p>
-
-            <span className="mt-1 text-sm text-slate-500">
-              Select multiple product images
-            </span>
 
             <input
               type="file"
               multiple
               accept="image/*"
               className="hidden"
+              onChange={(e) => {
+                const files = Array.from(
+                  e.target.files || []
+                );
+
+                setGalleryPreview(
+                  files.map((file) =>
+                    URL.createObjectURL(file)
+                  )
+                );
+              }}
             />
           </label>
         </div>
       </div>
 
-      {/* Preview Placeholder */}
+      {/* Preview */}
 
-      <div className="mt-8">
-        <h4 className="mb-4 font-semibold text-slate-800">
+      <div className="mt-10">
+        <h4 className="mb-4 font-semibold">
           Image Preview
         </h4>
 
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-          {Array.from({ length: 5 }).map((_, index) => (
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+          {thumbnailPreview && (
+            <div className="relative aspect-square overflow-hidden rounded-xl border">
+              <Image
+                src={thumbnailPreview}
+                alt="thumbnail"
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
+
+          {galleryPreview.map((image, index) => (
             <div
               key={index}
-              className="flex aspect-square items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50"
+              className="relative aspect-square overflow-hidden rounded-xl border"
             >
-              <FiImage
-                size={28}
-                className="text-slate-400"
+              <Image
+                src={image}
+                alt="gallery"
+                fill
+                className="object-cover"
               />
             </div>
           ))}
